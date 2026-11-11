@@ -44,24 +44,24 @@ export default function Home() {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <div className="flex gap-1">
-              <svg width="20" height="30" viewBox="0 0 20 30" fill="#7cb518">
+              <svg width="20" height="30" viewBox="0 0 20 30" fill="#E8C547">
                 <path d="M10 0L0 12h4L0 22h7v8h6v-8h7L16 12h4z"/>
               </svg>
-              <svg width="20" height="30" viewBox="0 0 20 30" fill="#5a9010">
+              <svg width="20" height="30" viewBox="0 0 20 30" fill="#c9a830">
                 <path d="M10 0L0 12h4L0 22h7v8h6v-8h7L16 12h4z"/>
               </svg>
             </div>
             <div>
               <div style={{ fontWeight: 900, fontSize: '1.4rem', color: 'white', lineHeight: 1.1, letterSpacing: '0.05em' }}>SECOND<br />NATURE</div>
-              <div style={{ fontSize: '0.8rem', color: 'white', letterSpacing: '0.15em', fontWeight: 600 }}>SNOW REMOVAL</div>
+              <div style={{ fontSize: '0.8rem', color: 'white', letterSpacing: '0.15em', fontWeight: 700 }}>SNOW REMOVAL</div>
             </div>
           </div>
 
           {/* Nav links */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#" style={{ color: 'white', fontSize: '0.9rem', textDecoration: 'none', fontWeight: 500 }}>Home</a>
-            <a href="#quote" style={{ color: 'white', fontSize: '0.9rem', textDecoration: 'none', fontWeight: 500 }}>Snow Removal</a>
-            <a href="#quote" style={{ background: '#c5e620', color: '#0d1f0f', padding: '10px 24px', borderRadius: '999px', fontWeight: 700, fontSize: '0.9rem', textDecoration: 'none' }}>Get a Quote</a>
+            <a href="#" style={{ background: "#063F32", color: "white", fontSize: "0.9rem", textDecoration: "none", fontWeight: 600, padding: "10px 22px", borderRadius: "999px" }}>Home</a>
+            <a href="#quote" style={{ background: "#063F32", color: "white", fontSize: "0.9rem", textDecoration: "none", fontWeight: 600, padding: "10px 22px", borderRadius: "999px" }}>Snow Removal</a>
+            <a href="#quote" style={{ background: '#E8C547', color: '#063F32', padding: '10px 24px', borderRadius: '999px', fontWeight: 700, fontSize: '0.9rem', textDecoration: 'none' }}>Get a Quote</a>
           </div>
         </nav>
 
@@ -73,14 +73,14 @@ export default function Home() {
             <span style={{ position: 'relative', display: 'inline-block' }}>
               FUN.
               <svg style={{ position: 'absolute', bottom: '-8px', left: 0, width: '100%' }} height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
-                <path d="M0 4 Q25 0 50 4 Q75 8 100 4" stroke="#c5e620" strokeWidth="4" fill="none" strokeLinecap="round"/>
+                <path d="M0 4 Q25 0 50 4 Q75 8 100 4" stroke="#E8C547" strokeWidth="4" fill="none" strokeLinecap="round"/>
               </svg>
             </span>
           </h1>
           <p style={{ fontSize: '1.3rem', color: '#e8f5d0', fontStyle: 'italic', marginBottom: '2rem', fontWeight: 400, lineHeight: 1.4 }}>
             We&apos;ll handle the driveway,<br />so you can enjoy what matters most.
           </p>
-          <a href="#quote" style={{ display: 'inline-block', background: '#c5e620', color: '#0d1f0f', padding: '18px 40px', borderRadius: '999px', fontWeight: 800, fontSize: '1rem', textDecoration: 'none', letterSpacing: '0.05em' }}>
+          <a href="#quote" style={{ display: 'inline-block', background: '#E8C547', color: '#063F32', padding: '18px 40px', borderRadius: '999px', fontWeight: 800, fontSize: '1rem', textDecoration: 'none', letterSpacing: '0.05em' }}>
             GET A FREE QUOTE →
           </a>
         </div>
@@ -215,5 +215,6 @@ export default function Home() {
     </main>
   );
 }
+
 
 
