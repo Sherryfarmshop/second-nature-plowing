@@ -114,22 +114,15 @@ export default function Home() {
         </div>
 
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
-          {/* Left - family photo / video placeholder */}
-          <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#0d2510', aspectRatio: '4/3', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Image
-              src="/family-photo.jpg"
-              alt="Happy family enjoying a snow day"
-              fill
-              className="object-cover"
-            />
-            {/* Play button overlay */}
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.3)' }}>
-              <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="#1a3a1f">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
+          {/* Left - Video placeholder */}
+          <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#0d2510', aspectRatio: '4/3', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', border: '2px dashed rgba(197,230,32,0.3)' }}>
+            <div style={{ width: '72px', height: '72px', borderRadius: '50%', background: 'rgba(197,230,32,0.15)', border: '2px solid #c5e620', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="#c5e620">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
             </div>
+            <p style={{ color: '#a3c97a', fontSize: '0.9rem', fontWeight: 600, marginBottom: '4px' }}>Video Coming Soon</p>
+            <p style={{ color: '#5a7a5a', fontSize: '0.75rem', textAlign: 'center', padding: '0 20px' }}>See us in action clearing driveways across Livonia</p>
           </div>
 
           {/* Right - Quote form */}
