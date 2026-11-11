@@ -37,7 +37,7 @@ export default function Home() {
         </div>
 
         {/* Light overlay on left side only for text readability */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,31,15,0.75) 0%, rgba(13,31,15,0.4) 45%, rgba(13,31,15,0.05) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,31,15,0.55) 0%, rgba(13,31,15,0.2) 45%, rgba(13,31,15,0.05) 100%)' }} />
 
         {/* NAVBAR */}
         <nav className="relative z-20 flex items-center justify-between px-6 py-5 max-w-6xl mx-auto w-full">
@@ -108,7 +108,7 @@ export default function Home() {
                 <span style={{ fontSize: '1.6rem', flexShrink: 0 }}>{item.icon}</span>
                 <div>
                   <div style={{ color: 'white', fontWeight: 700, fontSize: '0.9rem', lineHeight: 1.2 }}>{item.title}</div>
-                  <div style={{ color: '#a3c97a', fontSize: '0.85rem', lineHeight: 1.2 }}>{item.sub}</div>
+                  <div style={{ color: 'white', fontSize: '0.85rem', opacity: 0.85, lineHeight: 1.2 }}>{item.sub}</div>
                 </div>
               </div>
             ))}
