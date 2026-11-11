@@ -85,35 +85,17 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Wavy snow divider + pine trees */}
+        {/* Wavy snow divider */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          {/* Pine tree silhouettes */}
-          <div style={{ position: 'relative', height: '120px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', padding: '0 20px' }}>
-            {[...Array(12)].map((_, i) => (
-              <svg key={i} width={30 + (i % 3) * 10} height={60 + (i % 4) * 20} viewBox="0 0 30 80" style={{ opacity: 0.6 + (i % 3) * 0.1 }}>
-                <path d="M15 0L0 30h8L2 55h11v25h4V55h11L22 30h8z" fill="#0a2a0d"/>
-              </svg>
-            ))}
-          </div>
-          {/* Wavy snow hill */}
           <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', width: '100%' }}>
-            <path d="M0,40 C200,80 400,0 600,40 C800,80 1000,10 1200,40 C1300,55 1380,30 1440,40 L1440,80 L0,80 Z" fill="#f0ece2"/>
+            <path d="M0,40 C200,80 400,0 600,40 C800,80 1000,10 1200,40 C1300,55 1380,30 1440,40 L1440,80 L0,80 Z" fill="#1a3a1f"/>
           </svg>
         </div>
       </section>
 
       {/* BOTTOM SECTION - cream/dark green */}
       <section id="quote" style={{ background: '#1a3a1f', padding: '0 0 60px 0' }}>
-        {/* Pine tree row */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0 30px', marginBottom: '20px', alignItems: 'flex-end' }}>
-          {[...Array(10)].map((_, i) => (
-            <svg key={i} width={25 + (i % 3) * 8} height={50 + (i % 3) * 15} viewBox="0 0 30 80" style={{ opacity: 0.5 }}>
-              <path d="M15 0L0 30h8L2 55h11v25h4V55h11L22 30h8z" fill="#0a2a0d"/>
-            </svg>
-          ))}
-        </div>
-
-        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
+        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start" style={{ paddingTop: '40px' }}>
           {/* Left - Video placeholder */}
           <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#0d2510', aspectRatio: '4/3', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', border: '2px dashed rgba(197,230,32,0.3)' }}>
             <div style={{ width: '72px', height: '72px', borderRadius: '50%', background: 'rgba(197,230,32,0.15)', border: '2px solid #c5e620', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
@@ -177,14 +159,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Bottom pine trees */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '30px 10px 0', alignItems: 'flex-end' }}>
-          {[...Array(14)].map((_, i) => (
-            <svg key={i} width={20 + (i % 4) * 8} height={40 + (i % 5) * 15} viewBox="0 0 30 80" style={{ opacity: 0.4 + (i % 3) * 0.1 }}>
-              <path d="M15 0L0 30h8L2 55h11v25h4V55h11L22 30h8z" fill="#0a2a0d"/>
-            </svg>
-          ))}
-        </div>
+
       </section>
 
       {/* Footer */}
