@@ -37,7 +37,7 @@ export default function Home() {
         </div>
 
         {/* Light overlay on left side only for text readability */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,31,15,0.55) 0%, rgba(13,31,15,0.2) 45%, rgba(13,31,15,0.05) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,31,15,0.4) 0%, rgba(13,31,15,0.1) 45%, rgba(13,31,15,0.0) 100%)' }} />
 
         {/* NAVBAR */}
         <nav className="relative z-20 flex items-center justify-between px-6 py-5 max-w-6xl mx-auto w-full">
@@ -52,8 +52,8 @@ export default function Home() {
               </svg>
             </div>
             <div>
-              <div style={{ fontWeight: 900, fontSize: '1.1rem', color: 'white', lineHeight: 1.1, letterSpacing: '0.05em' }}>SECOND<br />NATURE</div>
-              <div style={{ fontSize: '0.65rem', color: '#a3c97a', letterSpacing: '0.15em', fontWeight: 600 }}>SNOW REMOVAL</div>
+              <div style={{ fontWeight: 900, fontSize: '1.4rem', color: 'white', lineHeight: 1.1, letterSpacing: '0.05em' }}>SECOND<br />NATURE</div>
+              <div style={{ fontSize: '0.8rem', color: '#a3c97a', letterSpacing: '0.15em', fontWeight: 600 }}>SNOW REMOVAL</div>
             </div>
           </div>
 
@@ -105,7 +105,7 @@ export default function Home() {
               { icon: '🤝', title: 'Local,', sub: 'Trusted Service' },
             ].map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '20px 16px', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
-                <span style={{ fontSize: '1.6rem', flexShrink: 0 }}>{item.icon}</span>
+                <span style={{ fontSize: '2rem', flexShrink: 0, color: 'white', fontWeight: 300 }}>{item.icon}</span>
                 <div>
                   <div style={{ color: 'white', fontWeight: 700, fontSize: '0.9rem', lineHeight: 1.2 }}>{item.title}</div>
                   <div style={{ color: 'white', fontSize: '0.85rem', opacity: 0.85, lineHeight: 1.2 }}>{item.sub}</div>
@@ -189,3 +189,4 @@ export default function Home() {
     </main>
   );
 }
+
