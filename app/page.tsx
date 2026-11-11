@@ -153,13 +153,13 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start" style={{ paddingTop: '40px' }}>
+        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center" style={{ paddingTop: '40px' }}>
           {/* Left - Video */}
-          <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#0d2510' }}>
+          <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#0d2510', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '350px' }}>
             <video
               src="https://cdn.creatify.ai/video-composer/67fca942-9016-459b-b57b-67f209d591b3.mp4"
               controls
-              style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+              style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
             />
           </div>
 
