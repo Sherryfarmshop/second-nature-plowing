@@ -96,22 +96,48 @@ export default function Home() {
       {/* BOTTOM SECTION - cream/dark green */}
       <section id="quote" style={{ background: '#1a3a1f', padding: '0 0 60px 0' }}>
         {/* Trust bar */}
-        <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '0' }}>
-          <div className="max-w-5xl mx-auto px-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0' }}>
-            {[
-              { icon: '❄️', title: 'Residential', sub: 'Snow Removal' },
-              { icon: '📅', title: 'Reliable', sub: '& On Time' },
-              { icon: '📍', title: 'Livonia &', sub: 'Surrounding Areas' },
-              { icon: '🤝', title: 'Local,', sub: 'Trusted Service' },
-            ].map((item, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '20px 16px', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
-                <span style={{ fontSize: '2rem', flexShrink: 0, color: 'white', fontWeight: 300 }}>{item.icon}</span>
-                <div>
-                  <div style={{ color: 'white', fontWeight: 700, fontSize: '0.9rem', lineHeight: 1.2 }}>{item.title}</div>
-                  <div style={{ color: 'white', fontSize: '0.85rem', opacity: 0.85, lineHeight: 1.2 }}>{item.sub}</div>
-                </div>
+        <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="max-w-5xl mx-auto px-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+            {/* Residential */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '20px 16px', borderRight: '1px solid rgba(255,255,255,0.1)' }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style={{ flexShrink: 0 }}>
+                <path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <div>
+                <div style={{ color: 'white', fontWeight: 700, fontSize: '0.9rem' }}>Residential</div>
+                <div style={{ color: 'white', fontSize: '0.85rem', opacity: 0.8 }}>Snow Removal</div>
               </div>
-            ))}
+            </div>
+            {/* Reliable */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '20px 16px', borderRight: '1px solid rgba(255,255,255,0.1)' }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style={{ flexShrink: 0 }}>
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <div style={{ color: 'white', fontWeight: 700, fontSize: '0.9rem' }}>Reliable</div>
+                <div style={{ color: 'white', fontSize: '0.85rem', opacity: 0.8 }}>&amp; On Time</div>
+              </div>
+            </div>
+            {/* Service Area */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '20px 16px', borderRight: '1px solid rgba(255,255,255,0.1)' }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style={{ flexShrink: 0 }}>
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <div>
+                <div style={{ color: 'white', fontWeight: 700, fontSize: '0.9rem' }}>Livonia &amp;</div>
+                <div style={{ color: 'white', fontSize: '0.85rem', opacity: 0.8 }}>Surrounding Areas</div>
+              </div>
+            </div>
+            {/* Local */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '20px 16px' }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style={{ flexShrink: 0 }}>
+                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+              </svg>
+              <div>
+                <div style={{ color: 'white', fontWeight: 700, fontSize: '0.9rem' }}>Local,</div>
+                <div style={{ color: 'white', fontSize: '0.85rem', opacity: 0.8 }}>Trusted Service</div>
+              </div>
+            </div>
           </div>
         </div>
 
