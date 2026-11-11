@@ -142,15 +142,14 @@ export default function Home() {
         </div>
 
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start" style={{ paddingTop: '40px' }}>
-          {/* Left - Video placeholder */}
-          <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#0d2510', aspectRatio: '4/3', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', border: '2px dashed rgba(197,230,32,0.3)' }}>
-            <div style={{ width: '72px', height: '72px', borderRadius: '50%', background: 'rgba(197,230,32,0.15)', border: '2px solid #c5e620', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="#c5e620">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-            <p style={{ color: '#a3c97a', fontSize: '0.9rem', fontWeight: 600, marginBottom: '4px' }}>Video Coming Soon</p>
-            <p style={{ color: '#5a7a5a', fontSize: '0.75rem', textAlign: 'center', padding: '0 20px' }}>See us in action clearing driveways across Livonia</p>
+          {/* Left - Video */}
+          <div style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '4/3', position: 'relative' }}>
+            <video
+              src="https://cdn.creatify.ai/video-composer/67fca942-9016-459b-b57b-67f209d591b3.mp4"
+              controls
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              poster=""
+            />
           </div>
 
           {/* Right - Quote form */}
