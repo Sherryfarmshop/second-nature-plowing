@@ -15,7 +15,7 @@ export default function Home() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const body = `Name: ${form.name}%0APhone: ${form.phone}%0AAddress: ${form.address}%0AService: ${form.service}`;
-    window.location.href = `mailto:alex@secondnatureplowing.com?subject=Snow Removal Quote Request from ${form.name}&body=${body}`;
+    window.location.href = `mailto:llcsecondnature@gmail.com?subject=Snow Removal Quote Request from ${form.name}&body=${body}`;
     setSubmitted(true);
   };
 
