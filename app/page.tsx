@@ -142,12 +142,12 @@ export default function Home() {
         </div>
 
         {/* SEO Banner */}
-        <div style={{ background: '#F5F1E8', padding: '32px 24px', textAlign: 'center' }}>
+        <div style={{ background: '#F5F1E8', padding: '18px 24px', textAlign: 'center' }}>
           <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-            <h2 style={{ color: '#063F32', fontWeight: 700, fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', marginBottom: '12px', lineHeight: 1.3 }}>
+            <h2 style={{ color: '#063F32', fontWeight: 700, fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)', marginBottom: '6px', lineHeight: 1.3 }}>
               Residential Snow Removal in Livonia, Michigan
             </h2>
-            <p style={{ color: '#063F32', fontSize: 'clamp(0.85rem, 2vw, 1rem)', lineHeight: 1.7, margin: 0 }}>
+            <p style={{ color: '#063F32', fontSize: 'clamp(0.78rem, 1.8vw, 0.88rem)', lineHeight: 1.6, margin: 0 }}>
               Second Nature provides reliable residential snow plowing in Livonia and surrounding communities. Let us handle the snow so you can spend less time shoveling and more time enjoying winter.
             </p>
           </div>
