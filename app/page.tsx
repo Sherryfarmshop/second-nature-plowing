@@ -77,8 +77,8 @@ export default function Home() {
               </svg>
             </span>
           </h1>
-          <p style={{ fontSize: '1.4rem', color: '#e8f5d0', fontStyle: 'italic', marginBottom: '2rem', fontWeight: 400 }}>
-            We&apos;ll handle the driveway.
+          <p style={{ fontSize: '1.3rem', color: '#e8f5d0', fontStyle: 'italic', marginBottom: '2rem', fontWeight: 400, lineHeight: 1.4 }}>
+            We&apos;ll handle the driveway,<br />so you can enjoy what matters most.
           </p>
           <a href="#quote" style={{ display: 'inline-block', background: '#c5e620', color: '#0d1f0f', padding: '18px 40px', borderRadius: '999px', fontWeight: 800, fontSize: '1rem', textDecoration: 'none', letterSpacing: '0.05em' }}>
             GET A FREE QUOTE →
@@ -95,6 +95,26 @@ export default function Home() {
 
       {/* BOTTOM SECTION - cream/dark green */}
       <section id="quote" style={{ background: '#1a3a1f', padding: '0 0 60px 0' }}>
+        {/* Trust bar */}
+        <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '0' }}>
+          <div className="max-w-5xl mx-auto px-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0' }}>
+            {[
+              { icon: '❄️', title: 'Residential', sub: 'Snow Removal' },
+              { icon: '📅', title: 'Reliable', sub: '& On Time' },
+              { icon: '📍', title: 'Livonia &', sub: 'Surrounding Areas' },
+              { icon: '🤝', title: 'Local,', sub: 'Trusted Service' },
+            ].map((item, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '20px 16px', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
+                <span style={{ fontSize: '1.6rem', flexShrink: 0 }}>{item.icon}</span>
+                <div>
+                  <div style={{ color: 'white', fontWeight: 700, fontSize: '0.9rem', lineHeight: 1.2 }}>{item.title}</div>
+                  <div style={{ color: '#a3c97a', fontSize: '0.85rem', lineHeight: 1.2 }}>{item.sub}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start" style={{ paddingTop: '40px' }}>
           {/* Left - Video placeholder */}
           <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#0d2510', aspectRatio: '4/3', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', border: '2px dashed rgba(197,230,32,0.3)' }}>
