@@ -53,7 +53,7 @@ export default function Home() {
             </div>
             <div>
               <div style={{ fontWeight: 900, fontSize: '1.4rem', color: 'white', lineHeight: 1.1, letterSpacing: '0.05em' }}>SECOND<br />NATURE</div>
-              <div style={{ fontSize: '0.8rem', color: '#a3c97a', letterSpacing: '0.15em', fontWeight: 600 }}>SNOW REMOVAL</div>
+              <div style={{ fontSize: '0.8rem', color: 'white', letterSpacing: '0.15em', fontWeight: 600 }}>SNOW REMOVAL</div>
             </div>
           </div>
 
@@ -189,4 +189,5 @@ export default function Home() {
     </main>
   );
 }
+
 
