@@ -154,13 +154,13 @@ export default function Home() {
         </div>
 
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center" style={{ paddingTop: '40px' }}>
-          {/* Left - Video - centered, natural 9:16 proportions */}
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#0d2510', width: 'min(197px, 100%)', flexShrink: 0 }}>
+          {/* Left - Video - same height as form, centered, 9:16 natural ratio */}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+            <div style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '9/16', maxHeight: '520px', width: 'auto' }}>
               <video
                 src="https://cdn.creatify.ai/video-composer/67fca942-9016-459b-b57b-67f209d591b3.mp4"
                 controls
-                style={{ width: '100%', height: 'auto', display: 'block', aspectRatio: '9/16' }}
+                style={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain' }}
               />
             </div>
           </div>
