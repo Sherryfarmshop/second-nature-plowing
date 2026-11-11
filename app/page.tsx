@@ -26,7 +26,7 @@ export default function Home() {
       <section className="relative min-h-screen overflow-hidden" style={{ background: 'linear-gradient(180deg, #0d1f0f 0%, #1a3a1f 40%, #1a3a1f 70%, #0d2010 100%)' }}>
 
         {/* Background plow truck image placeholder */}
-        <div className="absolute inset-0 opacity-60">
+        <div className="absolute inset-0">
           <Image
             src="/plow-truck.jpg"
             alt="Snow plow truck clearing a snowy road"
@@ -36,8 +36,8 @@ export default function Home() {
           />
         </div>
 
-        {/* Dark overlay on left side for text readability */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,31,15,0.85) 0%, rgba(13,31,15,0.6) 50%, rgba(13,31,15,0.1) 100%)' }} />
+        {/* Light overlay on left side only for text readability */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,31,15,0.75) 0%, rgba(13,31,15,0.4) 45%, rgba(13,31,15,0.05) 100%)' }} />
 
         {/* NAVBAR */}
         <nav className="relative z-20 flex items-center justify-between px-6 py-5 max-w-6xl mx-auto w-full">
