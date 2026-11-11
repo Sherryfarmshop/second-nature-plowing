@@ -17,4 +17,35 @@ body {
   color: #1f2937;
   background-color: #ffffff;
   font-family: system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Mobile overrides */
+@media (max-width: 768px) {
+  /* Trust bar - stack on mobile */
+  .trust-bar-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Video section - stack on mobile */
+  .quote-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Video on mobile */
+  .video-wrapper {
+    max-height: 400px !important;
+    width: 100% !important;
+    aspect-ratio: 9/16 !important;
+  }
+
+  /* Form inputs full width */
+  input, select, textarea, button {
+    width: 100% !important;
+  }
 }
