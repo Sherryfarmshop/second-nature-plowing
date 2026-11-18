@@ -1,5 +1,8 @@
 'use client';
 
+import ChatBot from '../components/ChatBot';
+
+
 import { useForm, ValidationError } from '@formspree/react';
 import Image from 'next/image';
 
@@ -185,5 +188,7 @@ export default function Home() {
         <p>© 2026 Second Nature Snow Removal | Livonia, MI | <a href="tel:7347566119" style={{ color: '#E8C547', fontWeight: 700 }}>734-756-6119</a></p>
       </footer>
     </main>
-  );
+      <ChatBot />
+    );
 }
+
