@@ -187,8 +187,8 @@ export default function Home() {
       <footer style={{ background: '#0d1f0f', color: '#a3c97a', padding: '20px 16px', textAlign: 'center', fontSize: '0.8rem' }}>
         <p>© 2026 Second Nature Snow Removal | Livonia, MI | <a href="tel:7347566119" style={{ color: '#E8C547', fontWeight: 700 }}>734-756-6119</a></p>
       </footer>
-    </main>
       <ChatBot />
-    );
+    </main>
+  );
 }
 
