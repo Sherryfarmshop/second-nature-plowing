@@ -127,8 +127,19 @@ export default function ChatBot() {
       {/* Chat window */}
       {open && (
         <div style={{
-          position: 'fixed', bottom: '96px', right: '16px', zIndex: 1000,
-          width: '360px', maxWidth: 'calc(100vw - 32px)', background: 'white', borderRadius: '16px', boxShadow: '0 8px 40px rgba(0,0,0,0.18)', display: 'flex', flexDirection: 'column', overflow: 'hidden', height: 'min(540px, calc(100dvh - 120px))'
+                    position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000,
+          background: 'white',
+          borderRadius: '20px 20px 0 0',
+          boxShadow: '0 -4px 30px rgba(0,0,0,0.2)',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          height: '82svh',
+          maxHeight: '82svh',
         }}>
           {/* Header */}
           <div style={{ background: '#4A5D3A', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -226,4 +237,5 @@ export default function ChatBot() {
     </>
   );
 }
+
 
