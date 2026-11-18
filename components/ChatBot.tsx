@@ -13,7 +13,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: 'Welcome to Second Nature Snow Removal! Would you like a free quote on snow removal, or do you have a question?',
+      content: "Hello! I'm Alex's assistant at Second Nature Snow Removal. I can answer questions or help you get a free quote. Would you like a free snow removal quote, or do you have a question?",
       buttons: ['Get a Free Quote', 'Ask a Question']
     }
   ]);
