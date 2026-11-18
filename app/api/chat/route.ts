@@ -96,3 +96,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ content: "Sorry, something went wrong. Please call Alex at 734-756-6119." });
   }
 }
+

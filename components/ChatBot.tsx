@@ -5,45 +5,17 @@ import { useState, useRef, useEffect } from 'react';
 interface Message {
   role: 'user' | 'assistant';
   content: string;
+  buttons?: string[];
 }
-
-const SYSTEM_PROMPT = `You are Alex's assistant for Second Nature Snow Removal in Livonia, Michigan. You help homeowners and businesses get a snow removal quote.
-
-BUSINESS INFO:
-- Business: Second Nature Snow Removal
-- Owner: Alex Sieber
-- Phone: 734-756-6119
-- Service area: Livonia, Westland, Farmington Hills, Canton, Plymouth, Northville, Garden City, Dearborn Heights, Redford, Novi
-- Services: Residential driveway plowing, commercial lot plowing, salting/de-icing, sidewalk clearing
-- Pricing: Free custom quotes based on property
-- Contracts: Seasonal or per-push available
-- Fully licensed and insured
-
-YOUR JOB:
-1. Answer questions about services, pricing, and service area
-2. Collect quote information from interested customers
-3. When collecting a quote, ask these questions ONE AT A TIME:
-   - What is the address where you need snow removal?
-   - Is this residential or commercial?
-   - What needs clearing? (driveway / sidewalks / parking lot / all)
-   - How large is the area? (1-car / 2-car / 3+ car / long driveway)
-   - Any special conditions? (steep, gravel, tight turnaround, etc.)
-   - Seasonal or one-time service?
-   - Would you like salting/de-icing?
-   - When would you like service to start?
-   - Your name?
-   - Best phone number?
-   - Email address?
-4. When you have all info, say: "QUOTE_COMPLETE: [summarize all answers]"
-
-TONE: Friendly, professional, brief. This is a local family business. No fluff.
-
-If asked about price, explain quotes are free and custom — text Alex at 734-756-6119 for fastest response.`;
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Hey! I'm Alex's assistant at Second Nature Snow Removal. I can answer questions or help you get a free quote. What can I help you with?" }
+    {
+      role: 'assistant',
+      content: 'Welcome to Second Nature Snow Removal! Would you like a free quote on snow removal, or do you have a question?',
+      buttons: ['Get a Free Quote', 'Ask a Question']
+    }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -62,7 +34,6 @@ export default function ChatBot() {
         body: JSON.stringify({
           subject: 'New Snow Removal Quote Request (Chatbot)',
           message: summary,
-          _replyto: 'llcsecondnature@gmail.com'
         })
       });
       setLeadSent(true);
@@ -71,33 +42,51 @@ export default function ChatBot() {
     }
   };
 
-  const sendMessage = async () => {
-    if (!input.trim() || loading) return;
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || loading) return;
 
-    const userMessage: Message = { role: 'user', content: input };
-    const newMessages = [...messages, userMessage];
+    const userMessage: Message = { role: 'user', content: text };
+    const newMessages: Message[] = [...messages, userMessage];
     setMessages(newMessages);
     setInput('');
     setLoading(true);
 
     try {
+      const apiMessages = newMessages.map(m => ({ role: m.role, content: m.content }));
+
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: newMessages })
+        body: JSON.stringify({ messages: apiMessages })
       });
 
       const data = await response.json();
-      const assistantContent = data.content || "I'm sorry, I had trouble with that. Please call Alex at 734-756-6119.";
+      const assistantContent: string = data.content || "I'm sorry, I had trouble with that. Please call Alex at 734-756-6119.";
 
-      setMessages(prev => [...prev, { role: 'assistant', content: assistantContent }]);
+      // Parse buttons from response if any
+      let buttons: string[] | undefined;
+      let displayContent = assistantContent;
 
-      // Check if quote is complete
+      if (assistantContent.includes('BUTTONS:')) {
+        const parts = assistantContent.split('BUTTONS:');
+        displayContent = parts[0].trim();
+        buttons = parts[1].trim().split('|').map(b => b.trim()).filter(Boolean);
+      }
+
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: displayContent.replace('QUOTE_COMPLETE:', '').trim(),
+        buttons
+      }]);
+
       if (assistantContent.includes('QUOTE_COMPLETE:') && !leadSent) {
-        await sendToFormspree(assistantContent.replace('QUOTE_COMPLETE:', 'New chatbot quote request:\n'));
+        await sendToFormspree('New chatbot quote request:\n' + assistantContent.replace('QUOTE_COMPLETE:', '').trim());
       }
     } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, something went wrong. Please call Alex directly at 734-756-6119." }]);
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: "Sorry, something went wrong. Please call Alex at 734-756-6119."
+      }]);
     }
 
     setLoading(false);
@@ -106,13 +95,13 @@ export default function ChatBot() {
   const handleKey = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      sendMessage();
+      sendMessage(input);
     }
   };
 
   return (
     <>
-      {/* Chat bubble button */}
+      {/* Chat bubble */}
       <button
         onClick={() => setOpen(!open)}
         style={{
@@ -121,7 +110,6 @@ export default function ChatBot() {
           background: '#4A5D3A', border: 'none', cursor: 'pointer',
           boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          transition: 'transform 0.2s'
         }}
         aria-label="Chat with us"
       >
@@ -144,7 +132,7 @@ export default function ChatBot() {
           background: 'white', borderRadius: '16px',
           boxShadow: '0 8px 40px rgba(0,0,0,0.18)',
           display: 'flex', flexDirection: 'column',
-          overflow: 'hidden', maxHeight: '520px'
+          overflow: 'hidden', maxHeight: '540px'
         }}>
           {/* Header */}
           <div style={{ background: '#4A5D3A', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -158,17 +146,39 @@ export default function ChatBot() {
           {/* Messages */}
           <div style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {messages.map((msg, i) => (
-              <div key={i} style={{
-                display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start'
-              }}>
-                <div style={{
-                  maxWidth: '80%', padding: '10px 14px', borderRadius: msg.role === 'user' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
-                  background: msg.role === 'user' ? '#4A5D3A' : '#F3F4F6',
-                  color: msg.role === 'user' ? 'white' : '#1F2937',
-                  fontSize: '14px', lineHeight: '1.5'
-                }}>
-                  {msg.content.replace('QUOTE_COMPLETE:', '').trim()}
+              <div key={i}>
+                <div style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
+                  <div style={{
+                    maxWidth: '85%', padding: '10px 14px',
+                    borderRadius: msg.role === 'user' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
+                    background: msg.role === 'user' ? '#4A5D3A' : '#F3F4F6',
+                    color: msg.role === 'user' ? 'white' : '#1F2937',
+                    fontSize: '14px', lineHeight: '1.5'
+                  }}>
+                    {msg.content}
+                  </div>
                 </div>
+                {/* Buttons */}
+                {msg.buttons && msg.buttons.length > 0 && (
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px', paddingLeft: '4px' }}>
+                    {msg.buttons.map((btn, bi) => (
+                      <button
+                        key={bi}
+                        onClick={() => sendMessage(btn)}
+                        style={{
+                          padding: '8px 16px', borderRadius: '20px',
+                          border: '2px solid #4A5D3A', background: 'white',
+                          color: '#4A5D3A', fontSize: '13px', fontWeight: 600,
+                          cursor: 'pointer', transition: 'all 0.15s'
+                        }}
+                        onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = '#4A5D3A'; (e.target as HTMLButtonElement).style.color = 'white'; }}
+                        onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = 'white'; (e.target as HTMLButtonElement).style.color = '#4A5D3A'; }}
+                      >
+                        {btn}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
             {loading && (
@@ -200,7 +210,7 @@ export default function ChatBot() {
               }}
             />
             <button
-              onClick={sendMessage}
+              onClick={() => sendMessage(input)}
               disabled={loading || !input.trim()}
               style={{
                 width: '40px', height: '40px', borderRadius: '50%',
@@ -219,5 +229,3 @@ export default function ChatBot() {
     </>
   );
 }
-
-export { SYSTEM_PROMPT };
