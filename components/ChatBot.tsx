@@ -110,7 +110,7 @@ export default function ChatBot() {
     right: 0,
     zIndex: 1000,
     width: '100%',
-    height: '78svh',
+    height: '75dvh',
     borderRadius: '20px 20px 0 0',
     boxShadow: '0 -4px 30px rgba(0,0,0,0.20)',
     background: 'white',
@@ -202,38 +202,51 @@ export default function ChatBot() {
           </div>
 
           {/* Input bar */}
-          <div style={{ padding: '10px 12px', borderTop: '1px solid #E5E7EB', display: 'flex', alignItems: 'center', gap: '8px', background: 'white', flexShrink: 0 }}>
+          <div style={{
+            padding: '12px 14px',
+            borderTop: '2px solid #E5E7EB',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            background: '#FFFFFF',
+            flexShrink: 0,
+            boxShadow: '0 -2px 8px rgba(0,0,0,0.06)',
+          }}>
             <input
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={handleKey}
-              placeholder="Type a message..."
+              placeholder="Type your answer here..."
+              autoComplete="off"
               style={{
                 flex: 1,
-                padding: '11px 15px',
-                border: '1.5px solid #D1D5DB',
-                borderRadius: '24px',
+                padding: '13px 18px',
+                border: '2px solid #4A5D3A',
+                borderRadius: '28px',
                 outline: 'none',
                 fontSize: '16px',
-                background: '#F9FAFB',
+                background: '#FFFFFF',
                 color: '#111827',
                 minWidth: 0,
-                width: '100%',
+                boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.08)',
+                WebkitAppearance: 'none',
               }}
-              onFocus={() => setTimeout(() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 400)}
+              onFocus={() => setTimeout(() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 500)}
             />
             <button
               onClick={() => sendMessage(input)}
               disabled={loading || !input.trim()}
               style={{
-                width: '44px', height: '44px', flexShrink: 0,
+                width: '48px', height: '48px', flexShrink: 0,
                 borderRadius: '50%',
                 background: input.trim() && !loading ? '#4A5D3A' : '#9CA3AF',
-                border: 'none', cursor: input.trim() && !loading ? 'pointer' : 'default',
+                border: 'none',
+                cursor: input.trim() && !loading ? 'pointer' : 'default',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
               }}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
               </svg>
             </button>
