@@ -126,21 +126,34 @@ export default function ChatBot() {
 
       {/* Chat window */}
       {open && (
-        <div style={{
-                    position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1000,
-          background: 'white',
-          borderRadius: '20px 20px 0 0',
-          boxShadow: '0 -4px 30px rgba(0,0,0,0.2)',
-          display: 'flex',
-          flexDirection: 'column',
-          overflow: 'hidden',
-          height: '82svh',
-          maxHeight: '82svh',
-        }}>
+        <>
+          <style>{`
+            .chatbot-window {
+              bottom: 96px !important;
+              right: 24px !important;
+              width: 380px !important;
+              max-width: calc(100vw - 48px) !important;
+              border-radius: 16px !important;
+              box-shadow: 0 8px 40px rgba(0,0,0,0.18) !important;
+              height: min(560px, calc(100dvh - 140px)) !important;
+              max-height: min(560px, calc(100dvh - 140px)) !important;
+              left: auto !important;
+            }
+            @media (max-width: 639px) {
+              .chatbot-window {
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                border-radius: 20px 20px 0 0 !important;
+                box-shadow: 0 -4px 30px rgba(0,0,0,0.2) !important;
+                height: 78svh !important;
+                max-height: 78svh !important;
+              }
+            }
+          `}</style>
+          <div className="chatbot-window" style={{ position: "fixed", zIndex: 1000, background: "white", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           {/* Header */}
           <div style={{ background: '#4A5D3A', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#E8C547', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>❄️</div>
@@ -237,5 +250,7 @@ export default function ChatBot() {
     </>
   );
 }
+
+
 
 
