@@ -21,6 +21,7 @@ export default function ChatBot() {
   const [loading, setLoading] = useState(false);
   const [leadSent, setLeadSent] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -153,7 +154,16 @@ export default function ChatBot() {
               }
             }
           `}</style>
-          <div className="chatbot-window" style={{ position: "fixed", zIndex: 1000, background: "white", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          <div style={isMobile ? {
+            position: "fixed", zIndex: 1000, background: "white", display: "flex", flexDirection: "column", overflow: "hidden",
+            bottom: 0, left: 0, right: 0, width: "100%", borderRadius: "20px 20px 0 0",
+            boxShadow: "0 -4px 30px rgba(0,0,0,0.2)", height: "78svh", maxHeight: "78svh"
+          } : {
+            position: "fixed", zIndex: 1000, background: "white", display: "flex", flexDirection: "column", overflow: "hidden",
+            bottom: "96px", right: "24px", left: "auto", width: "380px", maxWidth: "calc(100vw - 48px)",
+            borderRadius: "16px", boxShadow: "0 8px 40px rgba(0,0,0,0.18)",
+            height: "min(560px, calc(100dvh - 140px))", maxHeight: "min(560px, calc(100dvh - 140px))"
+          }}>
           {/* Header */}
           <div style={{ background: '#4A5D3A', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#E8C547', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>❄️</div>
@@ -250,6 +260,7 @@ export default function ChatBot() {
     </>
   );
 }
+
 
 
 
