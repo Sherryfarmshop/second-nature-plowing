@@ -127,12 +127,8 @@ export default function ChatBot() {
       {/* Chat window */}
       {open && (
         <div style={{
-          position: 'fixed', bottom: '96px', right: '24px', zIndex: 1000,
-          width: '360px', maxWidth: 'calc(100vw - 48px)',
-          background: 'white', borderRadius: '16px',
-          boxShadow: '0 8px 40px rgba(0,0,0,0.18)',
-          display: 'flex', flexDirection: 'column',
-          overflow: 'hidden', maxHeight: '540px'
+          position: 'fixed', bottom: '96px', right: '16px', zIndex: 1000,
+          width: '360px', maxWidth: 'calc(100vw - 32px)', background: 'white', borderRadius: '16px', boxShadow: '0 8px 40px rgba(0,0,0,0.18)', display: 'flex', flexDirection: 'column', overflow: 'hidden', height: 'min(540px, calc(100dvh - 120px))'
         }}>
           {/* Header */}
           <div style={{ background: '#4A5D3A', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -205,9 +201,10 @@ export default function ChatBot() {
               placeholder="Type a message..."
               style={{
                 flex: 1, padding: '10px 14px', border: '1px solid #E5E7EB',
-                borderRadius: '24px', outline: 'none', fontSize: '14px',
+                borderRadius: '24px', outline: 'none', fontSize: '16px',
                 background: '#F9FAFB'
               }}
+              onFocus={() => setTimeout(() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 300)}
             />
             <button
               onClick={() => sendMessage(input)}
@@ -229,3 +226,4 @@ export default function ChatBot() {
     </>
   );
 }
+
