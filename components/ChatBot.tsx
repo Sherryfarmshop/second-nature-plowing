@@ -193,27 +193,27 @@ export default function ChatBot() {
           </div>
 
           {/* Input */}
-          <div style={{ padding: '12px 16px', borderTop: '1px solid #E5E7EB', display: 'flex', gap: '8px' }}>
+          <div style={{ padding: '10px 12px', borderTop: '1px solid #E5E7EB', display: 'flex', gap: '8px', alignItems: 'center', background: 'white' }}>
             <input
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={handleKey}
               placeholder="Type a message..."
               style={{
-                flex: 1, padding: '10px 14px', border: '1px solid #E5E7EB',
+                flex: 1, padding: '10px 14px', border: '1.5px solid #D1D5DB',
                 borderRadius: '24px', outline: 'none', fontSize: '16px',
-                background: '#F9FAFB'
+                background: 'white', color: '#111', minWidth: 0,
+                WebkitAppearance: 'none'
               }}
-              onFocus={() => setTimeout(() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 300)}
+              onFocus={() => setTimeout(() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 400)}
             />
             <button
               onClick={() => sendMessage(input)}
               disabled={loading || !input.trim()}
               style={{
-                width: '40px', height: '40px', borderRadius: '50%',
-                background: '#4A5D3A', border: 'none', cursor: 'pointer',
+                width: '44px', height: '44px', borderRadius: '50%', flexShrink: 0,
+                background: input.trim() ? '#4A5D3A' : '#9CA3AF', border: 'none', cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                opacity: loading || !input.trim() ? 0.5 : 1
               }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
