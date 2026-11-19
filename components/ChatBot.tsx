@@ -74,7 +74,11 @@ export default function ChatBot() {
       let buttons: string[] | undefined;
       let multiSelect = false;
       let display = raw;
-      if (raw.includes('MULTISELECT:')) {
+
+      // Detect area-selection question by content keywords — always show checkboxes
+      const isAreaQuestion = /what areas|areas.*cleared|areas.*like cleared|what.*clear/i.test(display);
+
+      if (raw.includes('MULTISELECT:') || isAreaQuestion) {
         const parts = raw.split('MULTISELECT:');
         display = parts[0].trim();
         multiSelect = true;
