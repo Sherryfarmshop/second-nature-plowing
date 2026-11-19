@@ -160,7 +160,7 @@ export default function ChatBot() {
           </div>
 
           {/* Input */}
-          <div style={{ padding: '10px 12px', borderTop: '1px solid #E5E7EB', display: 'flex', alignItems: 'center', gap: 8, background: '#fff', flexShrink: 0 }}>
+          <div style={{ padding: '10px 12px', borderTop: '1px solid #E5E7EB', background: '#fff', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
             <input
               value={input}
               onChange={e => setInput(e.target.value)}
@@ -168,36 +168,34 @@ export default function ChatBot() {
               placeholder="Type your answer here…"
               autoComplete="off"
               style={{
-                flex: 1,
-                padding: '12px 16px',
+                width: '100%',
+                padding: '14px 16px',
                 border: '2px solid #4A5D3A',
-                borderRadius: 24,
+                borderRadius: 12,
                 outline: 'none',
                 fontSize: 16,
                 background: '#fff',
                 color: '#111',
-                minWidth: 0,
-                width: '100%',
+                boxSizing: 'border-box',
               }}
             />
             <button
               onClick={() => sendMessage(input)}
               disabled={!input.trim() || loading}
               style={{
-                width: 38,
-                height: 38,
-                flexShrink: 0,
-                borderRadius: '50%',
+                width: '100%',
+                padding: '12px',
+                borderRadius: 24,
                 background: input.trim() && !loading ? '#4A5D3A' : '#9CA3AF',
                 border: 'none',
                 cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: 0,
+                color: 'white',
+                fontSize: 15,
+                fontWeight: 700,
+                letterSpacing: '0.05em',
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              {loading ? 'Sending…' : 'Send →'}
             </button>
           </div>
 
