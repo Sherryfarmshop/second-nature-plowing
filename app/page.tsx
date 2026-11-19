@@ -7,7 +7,7 @@ export default function Home() {
     <main style={{ fontFamily: 'system-ui, -apple-system, sans-serif', overflowX: 'hidden' }}>
 
       {/* HERO SECTION */}
-      <section className="relative overflow-hidden" style={{ minHeight: '100svh', background: 'linear-gradient(180deg, #0d1f0f 0%, #1a3a1f 40%, #1a3a1f 70%, #0d2010 100%)' }}>
+      <section className="relative overflow-hidden" style={{ minHeight: '100vh', background: 'linear-gradient(180deg, #0d1f0f 0%, #1a3a1f 40%, #1a3a1f 70%, #0d2010 100%)' }}>
         <div className="absolute inset-0">
           <Image src="/plow-truck.jpg" alt="Snow plow truck clearing a snowy road" fill className="object-cover object-right" priority />
         </div>
@@ -93,8 +93,7 @@ export default function Home() {
 
         {/* Video + Form */}
         <div className="max-w-5xl mx-auto px-4 sm:px-6" style={{ paddingTop: '40px' }}>
-          <style>{`@media(min-width:768px){.vf-grid{grid-template-columns:1fr 1fr!important}}`}</style>
-          <div className="vf-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem', alignItems: 'center' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Video */}
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <div style={{ borderRadius: '16px', overflow: 'hidden', width: 'min(220px, 100%)', aspectRatio: '9/16' }}>
