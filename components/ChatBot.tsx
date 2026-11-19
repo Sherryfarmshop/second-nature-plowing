@@ -168,24 +168,36 @@ export default function ChatBot() {
               placeholder="Type your answer here…"
               autoComplete="off"
               style={{
-                flex: 1, padding: '11px 14px',
-                border: '2px solid #4A5D3A', borderRadius: 24,
-                outline: 'none', fontSize: 16,
-                background: '#fff', color: '#111',
+                flex: 1,
+                padding: '12px 16px',
+                border: '2px solid #4A5D3A',
+                borderRadius: 24,
+                outline: 'none',
+                fontSize: 16,
+                background: '#fff',
+                color: '#111',
                 minWidth: 0,
+                width: '100%',
               }}
             />
             <button
               onClick={() => sendMessage(input)}
               disabled={!input.trim() || loading}
               style={{
-                width: 44, height: 44, flexShrink: 0, borderRadius: '50%',
+                width: 38,
+                height: 38,
+                flexShrink: 0,
+                borderRadius: '50%',
                 background: input.trim() && !loading ? '#4A5D3A' : '#9CA3AF',
-                border: 'none', cursor: 'pointer',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: 0,
               }}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
             </button>
           </div>
 
