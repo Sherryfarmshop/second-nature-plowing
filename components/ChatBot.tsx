@@ -6,6 +6,7 @@ interface Message {
   role: 'user' | 'assistant';
   content: string;
   buttons?: string[];
+  multiSelect?: boolean;
 }
 
 export default function ChatBot() {
@@ -20,7 +21,23 @@ export default function ChatBot() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [leadSent, setLeadSent] = useState(false);
+  const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const AREA_OPTIONS = ['Driveway', 'Sidewalks', 'Walkways', 'Front steps', 'Other'];
+
+  const toggleArea = (area: string) => {
+    setSelectedAreas(prev =>
+      prev.includes(area) ? prev.filter(a => a !== area) : [...prev, area]
+    );
+  };
+
+  const submitAreas = () => {
+    if (selectedAreas.length === 0) return;
+    const summary = selectedAreas.join(', ');
+    setSelectedAreas([]);
+    sendMessage(`I need cleared: ${summary}`);
+  };
 
   useEffect(() => {
     if (open) {
@@ -55,13 +72,18 @@ export default function ChatBot() {
       const data = await response.json();
       const raw: string = data.content || "Sorry, something went wrong. Please try again.";
       let buttons: string[] | undefined;
+      let multiSelect = false;
       let display = raw;
-      if (raw.includes('BUTTONS:')) {
+      if (raw.includes('MULTISELECT:')) {
+        const parts = raw.split('MULTISELECT:');
+        display = parts[0].trim();
+        multiSelect = true;
+      } else if (raw.includes('BUTTONS:')) {
         const parts = raw.split('BUTTONS:');
         display = parts[0].trim();
         buttons = parts[1].trim().split('|').map(b => b.trim()).filter(Boolean);
       }
-      setMessages(prev => [...prev, { role: 'assistant', content: display.replace('QUOTE_COMPLETE:', '').trim(), buttons }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: display.replace('QUOTE_COMPLETE:', '').trim(), buttons, multiSelect }]);
       if (raw.includes('QUOTE_COMPLETE:') && !leadSent) {
         await sendToFormspree('New chatbot quote:\n' + raw.replace('QUOTE_COMPLETE:', '').trim());
       }
@@ -134,7 +156,7 @@ export default function ChatBot() {
                     fontSize: 14, lineHeight: 1.5,
                   }}>{msg.content}</div>
                 </div>
-                {msg.buttons && msg.buttons.length > 0 && (
+                {msg.buttons && msg.buttons.length > 0 && !msg.multiSelect && (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 8, paddingLeft: 2 }}>
                     {msg.buttons.map((btn, bi) => (
                       <button key={bi} onClick={() => sendMessage(btn)} style={{
@@ -144,6 +166,42 @@ export default function ChatBot() {
                         cursor: 'pointer', textAlign: 'left',
                       }}>{btn}</button>
                     ))}
+                  </div>
+                )}
+                {msg.multiSelect && i === messages.length - 1 && (
+                  <div style={{ marginTop: 8, paddingLeft: 2 }}>
+                    {AREA_OPTIONS.map((area) => (
+                      <div key={area} onClick={() => toggleArea(area)} style={{
+                        display: 'flex', alignItems: 'center', gap: 10,
+                        padding: '10px 14px', marginBottom: 6,
+                        border: `2px solid ${selectedAreas.includes(area) ? '#4A5D3A' : '#D1D5DB'}`,
+                        borderRadius: 10,
+                        background: selectedAreas.includes(area) ? '#EDF3EA' : '#fff',
+                        cursor: 'pointer',
+                      }}>
+                        <div style={{
+                          width: 20, height: 20, borderRadius: 4, flexShrink: 0,
+                          border: `2px solid ${selectedAreas.includes(area) ? '#4A5D3A' : '#9CA3AF'}`,
+                          background: selectedAreas.includes(area) ? '#4A5D3A' : '#fff',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        }}>
+                          {selectedAreas.includes(area) && <svg width="12" height="12" viewBox="0 0 12 12" fill="white"><path d="M1 6l4 4 6-8" stroke="white" strokeWidth="2" fill="none"/></svg>}
+                        </div>
+                        <span style={{ fontSize: 14, fontWeight: 600, color: '#1F2937' }}>{area}</span>
+                      </div>
+                    ))}
+                    <button
+                      onClick={submitAreas}
+                      disabled={selectedAreas.length === 0}
+                      style={{
+                        width: '100%', marginTop: 4, padding: '11px',
+                        borderRadius: 24, border: 'none',
+                        background: selectedAreas.length > 0 ? '#4A5D3A' : '#9CA3AF',
+                        color: '#fff', fontSize: 14, fontWeight: 700, cursor: 'pointer',
+                      }}
+                    >
+                      Continue with {selectedAreas.length > 0 ? selectedAreas.join(', ') : '…'}
+                    </button>
                   </div>
                 )}
               </div>
