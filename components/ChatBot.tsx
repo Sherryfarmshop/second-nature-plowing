@@ -76,14 +76,18 @@ export default function ChatBot() {
       let display = raw;
 
       // Never show buttons for area/clearing questions — customer must type
-      const isAreaQuestion = /what areas|areas.*cleared|what.*clear|what.*would you like cleared/i.test(display);
+      const isAreaQuestion = /what.*needs.*cleared|what.*would you like cleared|needs to be cleared/i.test(display);
 
-      if (!isAreaQuestion && raw.includes('BUTTONS:')) {
+      // Force buttons for driveway width question regardless of AI response
+      const isDrivewayWidth = /how wide is (the|your) driveway/i.test(display);
+      if (isDrivewayWidth) {
+        buttons = ['1 car wide', '2 cars wide', '3+ cars wide', 'Not sure'];
+        display = display.replace(/BUTTONS:.*/s, '').trim();
+      } else if (!isAreaQuestion && raw.includes('BUTTONS:')) {
         const parts = raw.split('BUTTONS:');
         display = parts[0].trim();
         buttons = parts[1].trim().split('|').map(b => b.trim()).filter(Boolean);
       } else if (raw.includes('BUTTONS:')) {
-        // Strip BUTTONS from area questions completely
         display = raw.split('BUTTONS:')[0].trim();
       }
       setMessages(prev => [...prev, { role: 'assistant', content: display.replace('QUOTE_COMPLETE:', '').trim(), buttons, multiSelect }]);
