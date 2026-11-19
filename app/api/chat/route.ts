@@ -162,3 +162,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ content: "Sorry, something went wrong. Please try again." });
   }
 }
+
