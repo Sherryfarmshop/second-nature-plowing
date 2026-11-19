@@ -75,10 +75,16 @@ export default function ChatBot() {
       let multiSelect = false;
       let display = raw;
 
-      if (raw.includes('BUTTONS:')) {
+      // Never show buttons for area/clearing questions — customer must type
+      const isAreaQuestion = /what areas|areas.*cleared|what.*clear|what.*would you like cleared/i.test(display);
+
+      if (!isAreaQuestion && raw.includes('BUTTONS:')) {
         const parts = raw.split('BUTTONS:');
         display = parts[0].trim();
         buttons = parts[1].trim().split('|').map(b => b.trim()).filter(Boolean);
+      } else if (raw.includes('BUTTONS:')) {
+        // Strip BUTTONS from area questions completely
+        display = raw.split('BUTTONS:')[0].trim();
       }
       setMessages(prev => [...prev, { role: 'assistant', content: display.replace('QUOTE_COMPLETE:', '').trim(), buttons, multiSelect }]);
       if (raw.includes('QUOTE_COMPLETE:') && !leadSent) {
