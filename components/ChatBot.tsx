@@ -82,7 +82,7 @@ export default function ChatBot() {
         onClick={() => setOpen(o => !o)}
         aria-label="Open chat"
         style={{
-          position: 'fixed', bottom: 20, right: 20, zIndex: 9999,
+          position: 'fixed', bottom: 20, right: 16, zIndex: 9999,
           width: 60, height: 60, borderRadius: '50%',
           background: '#4A5D3A', border: 'none', cursor: 'pointer',
           boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
