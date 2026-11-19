@@ -93,10 +93,9 @@ export default function Home() {
 
         {/* Hero text */}
         <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-32">
-          <h1 style={{ fontSize: 'clamp(2rem, 8vw, 5rem)', fontWeight: 900, color: 'white', lineHeight: 1.05, marginBottom: '1rem', textTransform: 'uppercase' }}>
-            SNOW DAYS<br />
-            SHOULD BE{' '}
-            <span style={{ position: 'relative', display: 'inline-block' }}>
+          <h1 style={{ fontSize: 'clamp(1.8rem, 7vw, 5rem)', fontWeight: 900, color: 'white', lineHeight: 1.1, marginBottom: '1rem', textTransform: 'uppercase' }}>
+            SNOW DAYS SHOULD BE{' '}
+            <span style={{ position: 'relative', display: 'inline-block', whiteSpace: 'nowrap' }}>
               FUN.
               <svg style={{ position: 'absolute', bottom: '-8px', left: 0, width: '100%' }} height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
                 <path d="M0 4 Q25 0 50 4 Q75 8 100 4" stroke="#E8C547" strokeWidth="4" fill="none" strokeLinecap="round"/>
