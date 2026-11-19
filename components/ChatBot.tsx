@@ -82,7 +82,7 @@ export default function ChatBot() {
       const isDrivewayWidth = /how wide is (the|your) driveway/i.test(display);
       if (isDrivewayWidth) {
         buttons = ['1 car wide', '2 cars wide', '3+ cars wide', 'Not sure'];
-        display = display.replace(/BUTTONS:.*/s, '').trim();
+        display = display.split('BUTTONS:')[0].trim();
       } else if (!isAreaQuestion && raw.includes('BUTTONS:')) {
         const parts = raw.split('BUTTONS:');
         display = parts[0].trim();
